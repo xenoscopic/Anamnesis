@@ -11,6 +11,8 @@
 		16991BC310F1B87A0008015F /* ANCustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16991BC210F1B87A0008015F /* ANCustomWindow.m */; };
 		16991CE410F1C1E30008015F /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16991CE310F1C1E30008015F /* JRSwizzle.m */; };
 		16C2B6EE10F308A4002E15FA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2B6ED10F308A4002E15FA /* WebKit.framework */; };
+		16C2B7B410F3ED57002E15FA /* ANClosedTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2B7B310F3ED57002E15FA /* ANClosedTab.m */; };
+		16C2B7B710F3ED64002E15FA /* ANClosedTabManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2B7B610F3ED64002E15FA /* ANClosedTabManager.m */; };
 		8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
 		8D5B49B4048680CD000E48DA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -27,6 +29,10 @@
 		16991CE210F1C1E30008015F /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
 		16991CE310F1C1E30008015F /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
 		16C2B6ED10F308A4002E15FA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		16C2B7B210F3ED57002E15FA /* ANClosedTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANClosedTab.h; sourceTree = "<group>"; };
+		16C2B7B310F3ED57002E15FA /* ANClosedTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANClosedTab.m; sourceTree = "<group>"; };
+		16C2B7B510F3ED64002E15FA /* ANClosedTabManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANClosedTabManager.h; sourceTree = "<group>"; };
+		16C2B7B610F3ED64002E15FA /* ANClosedTabManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANClosedTabManager.m; sourceTree = "<group>"; };
 		32DBCF630370AF2F00C91783 /* Anamnesis_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Anamnesis_Prefix.pch; sourceTree = "<group>"; };
 		8D5B49B6048680CD000E48DA /* Anamnesis.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Anamnesis.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5B49B7048680CD000E48DA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,6 +91,10 @@
 				168F3FD010F15877002FC707 /* ANOpenLastTabPlugin.m */,
 				16991BC110F1B87A0008015F /* ANCustomWindow.h */,
 				16991BC210F1B87A0008015F /* ANCustomWindow.m */,
+				16C2B7B210F3ED57002E15FA /* ANClosedTab.h */,
+				16C2B7B310F3ED57002E15FA /* ANClosedTab.m */,
+				16C2B7B510F3ED64002E15FA /* ANClosedTabManager.h */,
+				16C2B7B610F3ED64002E15FA /* ANClosedTabManager.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -181,6 +191,8 @@
 				168F3FD110F15877002FC707 /* ANOpenLastTabPlugin.m in Sources */,
 				16991BC310F1B87A0008015F /* ANCustomWindow.m in Sources */,
 				16991CE410F1C1E30008015F /* JRSwizzle.m in Sources */,
+				16C2B7B410F3ED57002E15FA /* ANClosedTab.m in Sources */,
+				16C2B7B710F3ED64002E15FA /* ANClosedTabManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
