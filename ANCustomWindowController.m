@@ -23,7 +23,7 @@
  * OTHER DEALINGS IN THE SOFTWARE.
  */
 
-#import "ANCustomWindow.h"
+#import "ANCustomWindowController.h"
 #import "JRSwizzle.h"
 #import "ANClosedTab.h"
 
@@ -35,43 +35,43 @@
 //a swizzled windowWillClose.  This dictionary maps the object pointer
 //(in an NSNumber) to an NSMutableDictionary that maps strings representing
 //ivars to the values for that object.
-static NSMutableDictionary* ancw_fakeIvar = nil;
+static NSMutableDictionary* ancwc_fakeIvar = nil;
 
-void ancw_checkIvarInit()
+void ancwc_checkIvarInit()
 {
-	if(ancw_fakeIvar == nil)
+	if(ancwc_fakeIvar == nil)
 	{
-		ancw_fakeIvar = [[NSMutableDictionary alloc] init];
+		ancwc_fakeIvar = [[NSMutableDictionary alloc] init];
 	}
 }
 
-NSMutableDictionary* ancw_ivarDictForObject(id obj)
+NSMutableDictionary* ancwc_ivarDictForObject(id obj)
 {
-	ancw_checkIvarInit();
+	ancwc_checkIvarInit();
 	
-	NSMutableDictionary* ret = [ancw_fakeIvar objectForKey:[NSNumber numberWithInteger:(NSInteger)obj]];	
+	NSMutableDictionary* ret = [ancwc_fakeIvar objectForKey:[NSNumber numberWithInteger:(NSInteger)obj]];	
 	if(ret == nil)
 	{
 		//There is no entry for this object yet, create it
 		ret = [NSMutableDictionary dictionary];
 		//This should retain it
-		[ancw_fakeIvar setObject:ret forKey:[NSNumber numberWithInteger:(NSInteger)obj]];
+		[ancwc_fakeIvar setObject:ret forKey:[NSNumber numberWithInteger:(NSInteger)obj]];
 	}
 	
 	return ret;
 }
 
-void ancw_deleteIvarDictForObject(id obj)
+void ancwc_deleteIvarDictForObject(id obj)
 {
-	ancw_checkIvarInit();
+	ancwc_checkIvarInit();
 	
-	[ancw_fakeIvar removeObjectForKey:[NSNumber numberWithInteger:(NSInteger)obj]];
+	[ancwc_fakeIvar removeObjectForKey:[NSNumber numberWithInteger:(NSInteger)obj]];
 }
 
 //Convenience method for the only actual ivar
-NSMutableArray* ancw_closedTabStackForObject(id obj)
+NSMutableArray* ancwc_closedTabStackForObject(id obj)
 {
-	NSMutableDictionary* ivars = ancw_ivarDictForObject(obj);
+	NSMutableDictionary* ivars = ancwc_ivarDictForObject(obj);
 	
 	NSMutableArray* ret = [ivars objectForKey:@"closedTabStack"];
 	if(ret == nil)
@@ -84,28 +84,28 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 	return ret;
 }
 
-@implementation NSWindowController (ANCustomWindow)
+@implementation NSWindowController (ANCustomWindowController)
 
-+(void)ANSwizzleANCustomWindow
++(void)ANSwizzleANCustomWindowController
 {
 	//Swizzle closeTab
-	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(_safari_closeTab:) withMethod:@selector(closeTab:) error:NULL];
+	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(_AN_safari_closeTab:) withMethod:@selector(closeTab:) error:NULL];
 	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(closeTab:) withMethod:@selector(_anamnesis_closeTab:) error:NULL];
 	
 	//Swizzle close window
-	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(_safari_windowWillClose:) withMethod:@selector(windowWillClose:) error:NULL];
+	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(_AN_safari_windowWillClose:) withMethod:@selector(windowWillClose:) error:NULL];
 	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(windowWillClose:) withMethod:@selector(_anamnesis_windowWillClose:) error:NULL];
 }
 
 -(void)_anamnesis_closeTab:(id)arg1
 {
 	//arg1 should be a BrowserTabViewItem
-	NSMutableArray* tabStack = ancw_closedTabStackForObject(self);
+	NSMutableArray* tabStack = ancwc_closedTabStackForObject(self);
 	//Creating this ANClosedTab object will close the tab
 	[tabStack addObject:[ANClosedTab closedTabWithTab:arg1]];
 	
 	//Call the actual "super" method
-	[self _safari_closeTab:arg1];
+	[self _AN_safari_closeTab:arg1];
 }
 
 -(void)_anamnesis_windowWillClose:(id)arg1
@@ -117,14 +117,14 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 	//we can have an "isClosing" boolean if we have to so that
 	//if something trys to access the dictionary later, it will know not
 	//to reallocate it.
-	ancw_deleteIvarDictForObject(self);
-	[self _safari_windowWillClose:arg1];
+	ancwc_deleteIvarDictForObject(self);
+	[self _AN_safari_windowWillClose:arg1];
 }
 
 -(void)ANReopenLastClosedTab
 {
 	//Grab the tab stack and reopen the last entry
-	NSMutableArray* closedTabStack = ancw_closedTabStackForObject(self);
+	NSMutableArray* closedTabStack = ancwc_closedTabStackForObject(self);
 	
 	//If it's empty, our work is done
 	if([closedTabStack count] == 0)
@@ -140,7 +140,7 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 
 -(BOOL)canReopenLastTab
 {
-	if([ancw_closedTabStackForObject(self) count] == 0)
+	if([ancwc_closedTabStackForObject(self) count] == 0)
 	{
 		//There are no closed tabs to reopen
 		return NO;
@@ -149,7 +149,7 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 }
 
 //Swizzling handles
--(void)_safari_closeTab:(id)arg1{}
--(void)_safari_windowWillClose:(id)arg1{}
+-(void)_AN_safari_closeTab:(id)arg1{}
+-(void)_AN_safari_windowWillClose:(id)arg1{}
 
 @end

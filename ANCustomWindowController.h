@@ -25,17 +25,19 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NSWindowController (ANCustomWindow)
+//Category that will allow us to swizzle and wrap methods in
+//BrowserWindowController, which inherits from NSWindowController.
+@interface NSWindowController (ANCustomWindowController)
 
-+(void)ANSwizzleANCustomWindow;
++(void)ANSwizzleANCustomWindowController;
 
-//_safari_ methods are not actually implemented, I just use them as handles for swizzling.
+//_AN_safari_ methods are not actually implemented, I just use them as handles for swizzling.
 //_anamnesis_ methods are swizzling wrappers.
 
--(void)_safari_closeTab:(id)arg1;
+-(void)_AN_safari_closeTab:(id)arg1;
 -(void)_anamnesis_closeTab:(id)arg1;
 
--(void)_safari_windowWillClose:(id)arg1;
+-(void)_AN_safari_windowWillClose:(id)arg1;
 -(void)_anamnesis_windowWillClose:(id)arg1;
 
 -(BOOL)canReopenLastTab;

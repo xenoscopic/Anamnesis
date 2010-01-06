@@ -24,7 +24,8 @@
  */
 
 #import "ANOpenLastTabPlugin.h"
-#import "ANCustomWindow.h"
+#import "ANCustomWindowController.h"
+#import "ANCustomTabView.h"
 
 static ANOpenLastTabPlugin *sharedInstance = nil;
 
@@ -64,7 +65,8 @@ static ANOpenLastTabPlugin *sharedInstance = nil;
 	}
 	
 	//Swizzle
-	[NSWindowController ANSwizzleANCustomWindow];
+	[NSWindowController ANSwizzleANCustomWindowController];
+	[NSObject ANSwizzleANCustomTabView];
 	
 	NSLog(@"Anamnesis: Safari Open Last Closed Tab plugin loaded.");
 }

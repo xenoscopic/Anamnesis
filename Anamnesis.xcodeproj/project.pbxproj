@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		160415C810F4404F0050748A /* ANCustomTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160415C710F4404F0050748A /* ANCustomTabView.m */; };
 		168F3FD110F15877002FC707 /* ANOpenLastTabPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 168F3FD010F15877002FC707 /* ANOpenLastTabPlugin.m */; };
-		16991BC310F1B87A0008015F /* ANCustomWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 16991BC210F1B87A0008015F /* ANCustomWindow.m */; };
+		16991BC310F1B87A0008015F /* ANCustomWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16991BC210F1B87A0008015F /* ANCustomWindowController.m */; };
 		16991CE410F1C1E30008015F /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16991CE310F1C1E30008015F /* JRSwizzle.m */; };
 		16C2B6EE10F308A4002E15FA /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16C2B6ED10F308A4002E15FA /* WebKit.framework */; };
 		16C2B7B410F3ED57002E15FA /* ANClosedTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C2B7B310F3ED57002E15FA /* ANClosedTab.m */; };
@@ -21,10 +22,12 @@
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		089C167FFE841241C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		160415C610F4404F0050748A /* ANCustomTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCustomTabView.h; sourceTree = "<group>"; };
+		160415C710F4404F0050748A /* ANCustomTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCustomTabView.m; sourceTree = "<group>"; };
 		168F3FCF10F15877002FC707 /* ANOpenLastTabPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANOpenLastTabPlugin.h; sourceTree = "<group>"; };
 		168F3FD010F15877002FC707 /* ANOpenLastTabPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANOpenLastTabPlugin.m; sourceTree = "<group>"; };
-		16991BC110F1B87A0008015F /* ANCustomWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCustomWindow.h; sourceTree = "<group>"; };
-		16991BC210F1B87A0008015F /* ANCustomWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCustomWindow.m; sourceTree = "<group>"; };
+		16991BC110F1B87A0008015F /* ANCustomWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCustomWindowController.h; sourceTree = "<group>"; };
+		16991BC210F1B87A0008015F /* ANCustomWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCustomWindowController.m; sourceTree = "<group>"; };
 		16991CE210F1C1E30008015F /* JRSwizzle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JRSwizzle.h; sourceTree = "<group>"; };
 		16991CE310F1C1E30008015F /* JRSwizzle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JRSwizzle.m; sourceTree = "<group>"; };
 		16C2B6ED10F308A4002E15FA /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
@@ -86,10 +89,12 @@
 				16991CE310F1C1E30008015F /* JRSwizzle.m */,
 				168F3FCF10F15877002FC707 /* ANOpenLastTabPlugin.h */,
 				168F3FD010F15877002FC707 /* ANOpenLastTabPlugin.m */,
-				16991BC110F1B87A0008015F /* ANCustomWindow.h */,
-				16991BC210F1B87A0008015F /* ANCustomWindow.m */,
+				16991BC110F1B87A0008015F /* ANCustomWindowController.h */,
+				16991BC210F1B87A0008015F /* ANCustomWindowController.m */,
 				16C2B7B210F3ED57002E15FA /* ANClosedTab.h */,
 				16C2B7B310F3ED57002E15FA /* ANClosedTab.m */,
+				160415C610F4404F0050748A /* ANCustomTabView.h */,
+				160415C710F4404F0050748A /* ANCustomTabView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -184,9 +189,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				168F3FD110F15877002FC707 /* ANOpenLastTabPlugin.m in Sources */,
-				16991BC310F1B87A0008015F /* ANCustomWindow.m in Sources */,
+				16991BC310F1B87A0008015F /* ANCustomWindowController.m in Sources */,
 				16991CE410F1C1E30008015F /* JRSwizzle.m in Sources */,
 				16C2B7B410F3ED57002E15FA /* ANClosedTab.m in Sources */,
+				160415C810F4404F0050748A /* ANCustomTabView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
