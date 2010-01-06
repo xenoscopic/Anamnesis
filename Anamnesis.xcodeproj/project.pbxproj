@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		160415C810F4404F0050748A /* ANCustomTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 160415C710F4404F0050748A /* ANCustomTabView.m */; };
+		1647D3BB10F46CF70021D03D /* License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1647D3BA10F46CF70021D03D /* License.txt */; };
 		168F3FD110F15877002FC707 /* ANOpenLastTabPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 168F3FD010F15877002FC707 /* ANOpenLastTabPlugin.m */; };
 		16991BC310F1B87A0008015F /* ANCustomWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16991BC210F1B87A0008015F /* ANCustomWindowController.m */; };
 		16991CE410F1C1E30008015F /* JRSwizzle.m in Sources */ = {isa = PBXBuildFile; fileRef = 16991CE310F1C1E30008015F /* JRSwizzle.m */; };
@@ -24,6 +25,7 @@
 		1058C7ADFEA557BF11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		160415C610F4404F0050748A /* ANCustomTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCustomTabView.h; sourceTree = "<group>"; };
 		160415C710F4404F0050748A /* ANCustomTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANCustomTabView.m; sourceTree = "<group>"; };
+		1647D3BA10F46CF70021D03D /* License.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = License.txt; sourceTree = "<group>"; };
 		168F3FCF10F15877002FC707 /* ANOpenLastTabPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANOpenLastTabPlugin.h; sourceTree = "<group>"; };
 		168F3FD010F15877002FC707 /* ANOpenLastTabPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANOpenLastTabPlugin.m; sourceTree = "<group>"; };
 		16991BC110F1B87A0008015F /* ANCustomWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANCustomWindowController.h; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1647D3BA10F46CF70021D03D /* License.txt */,
 				8D5B49B7048680CD000E48DA /* Info.plist */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 			);
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D5B49B0048680CD000E48DA /* InfoPlist.strings in Resources */,
+				1647D3BB10F46CF70021D03D /* License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
