@@ -1,6 +1,29 @@
-#import "ANClosedTab.h"
-#import <WebKit/WebKit.h>
+/*
+ * Copyright (c) 2010 Jacob Howard
+ * 
+ * Permission is hereby granted, free of charge, to any person
+ * obtaining a copy of this software and associated documentation
+ * files (the "Software"), to deal in the Software without
+ * restriction, including without limitation the rights to use,
+ * copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following
+ * conditions:
+ 
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ * OTHER DEALINGS IN THE SOFTWARE.
+ */
 
+#import "ANClosedTab.h"
 
 @interface ANClosedTab ()
 
@@ -32,6 +55,7 @@
 -(void)dealloc
 {
 	[history release];
+	//[currentPage release]; //Might be allocated in scrapeTab
 	[super dealloc];
 }
 
@@ -132,6 +156,14 @@
 			currentHistoryItem = newItem;
 		}
 	}
+	
+	//Create a WebArchive of the current page if it isn't empty.
+	//The WebArchive doesn't do a great job of archiving, so
+	//for now just don't use it.
+	/*if(currentHistoryItem != nil)
+	{
+		currentPage = [[[webView mainFrameDocument] webArchive] retain];
+	}*/
 }
 
 -(void)recreateTabInWebView:(WebView*)webView andTab:(NSTabViewItem*)tab
@@ -144,6 +176,13 @@
 		//NSLog(@"Adding history item %p for %@", whi, [whi URLString]);
 		[newHistory addItem:whi];
 	}
+	
+	/*if(currentPage != nil)
+	{
+		NSLog(@"Loading from web archive");
+		[[webView mainFrame] loadArchive:currentPage];
+		return;
+	}*/
 	
 	if(currentHistoryItem != nil)
 	{
