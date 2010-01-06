@@ -141,13 +141,12 @@ static ANOpenLastTabPlugin *sharedInstance = nil;
 #pragma mark Open Last Tab methods
 -(void)reopenLastTab:(id)sender
 {
-	NSLog(@"Reopening last tab.");
+	//NSLog(@"Anamnesis: Reopening last tab.");
 	
 	id window = [[[NSApplication sharedApplication] keyWindow] windowController];
 	
 	if([NSStringFromClass([window class]) isEqualToString:@"BrowserWindowController"])
 	{
-		NSLog(@"Window is the right type");
 		[window ANReopenLastClosedTab];
 	}
 }

@@ -74,9 +74,6 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 
 -(void)_anamnesis_closeTab:(id)arg1
 {
-	NSLog(@"In swizzle closeTab.");
-	NSLog(@"Class is a %@", NSStringFromClass([arg1 class]));
-	
 	//arg1 should be a BrowserTabViewItem
 	NSMutableArray* tabStack = ancw_closedTabStackForObject(self);
 	//Creating this ANClosedTab object will close the tab
@@ -88,7 +85,6 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 
 -(void)_anamnesis_windowWillClose:(id)arg1
 {
-	NSLog(@"Saw window closing.");
 	//It should be safe to deallocate here because apparently
 	//closeTab isn't called for each individual tab inside a closing
 	//window, thus the dictionary being deleted won't have a detremental
