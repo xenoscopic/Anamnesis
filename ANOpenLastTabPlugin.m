@@ -89,6 +89,8 @@ static ANOpenLastTabPlugin *sharedInstance = nil;
 	//why but I suspect Safari is hacking the menu somehow to add the history items.
 	[historyMenu insertItemWithTitle:@"Reopen Last Closed Tab" action:@selector(reopenLastTab:) keyEquivalent:@"T" atIndex:insertIndex];
 	[[historyMenu itemAtIndex:insertIndex] setTarget:[ANOpenLastTabPlugin sharedInstance]];
+	[historyMenu update];
+	NSLog(@"HMAuto %i", [historyMenu autoenablesItems]);
 
 	return YES;
 }
@@ -150,6 +152,13 @@ static ANOpenLastTabPlugin *sharedInstance = nil;
 		NSLog(@"Window is the right type");
 		[window ANReopenLastClosedTab];
 	}
+}
+
+-(BOOL)validateMenuItem:(NSMenuItem *)menuItem
+{
+	//This will return NO in the event that keyWindow is nil.  Gotta
+	//love obj-c messaging.
+	return [[[[NSApplication sharedApplication] keyWindow] windowController] canReopenLastTab];
 }
 
 #pragma mark -

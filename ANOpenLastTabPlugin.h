@@ -17,4 +17,6 @@
 
 +(ANOpenLastTabPlugin*)sharedInstance;
 
+-(BOOL)validateMenuItem:(NSMenuItem *)menuItem;
+
 @end

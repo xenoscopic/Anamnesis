@@ -13,6 +13,8 @@
 -(void)_safari_windowWillClose:(id)arg1;
 -(void)_anamnesis_windowWillClose:(id)arg1;
 
+-(BOOL)canReopenLastTab;
+
 -(void)ANReopenLastClosedTab;
 
 @end

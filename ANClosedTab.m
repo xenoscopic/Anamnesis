@@ -22,6 +22,7 @@
 	isValid = NO;
 	if((self = [super init]) && tab != nil) //if tab == nil, just leave ivars initialized to nil
 	{
+		history = [[NSMutableArray alloc] init];
 		[self scrapeTab:tab];
 		isValid = YES;
 	}
@@ -30,7 +31,7 @@
 
 -(void)dealloc
 {
-	[history release]; //Allocated in scrapeTab
+	[history release];
 	[super dealloc];
 }
 
@@ -114,16 +115,23 @@
 	
 	//Grab history
 	WebBackForwardList* bfl = [[webView backForwardList] retain];
-	history = [[NSMutableArray alloc] init];
 	NSInteger i;
 	for(i=-[bfl backListCount];i<=[bfl forwardListCount];i++)
 	{
 		WebHistoryItem* oldItem = [bfl itemAtIndex:i];
+		//Don't add empty WebHistoryItems (i.e. newly created ones)
+		if([oldItem URLString] == nil)
+		{
+			continue;
+		}
 		WebHistoryItem* newItem = [[WebHistoryItem alloc] initWithURLString:[oldItem URLString] title:[oldItem title] lastVisitedTimeInterval:[oldItem lastVisitedTimeInterval]];
 		[history addObject:newItem];
 		[newItem release]; //history will retain it for us
+		if(i == 0)
+		{
+			currentHistoryItem = newItem;
+		}
 	}
-	currentHistoryIndex = [bfl backListCount];
 }
 
 -(void)recreateTabInWebView:(WebView*)webView andTab:(NSTabViewItem*)tab
@@ -133,14 +141,15 @@
 	
 	for(WebHistoryItem* whi in history)
 	{
-		NSLog(@"Adding history item %p for %@", whi, [whi URLString]);
+		//NSLog(@"Adding history item %p for %@", whi, [whi URLString]);
 		[newHistory addItem:whi];
 	}
 	
-	NSLog(@"Going to item %p for %@", [history objectAtIndex:currentHistoryIndex], [[history objectAtIndex:currentHistoryIndex] URLString]);
-	//[newHistory goToItem:[history objectAtIndex:currentHistoryIndex]]; //I'm assuming newHistory just retains the same object so we should be okay
-	//[webView reload:self];
-	[webView goToBackForwardItem:[history objectAtIndex:currentHistoryIndex]];
+	if(currentHistoryItem != nil)
+	{
+		//NSLog(@"Going to item %p for %@", currentHistoryItem, [currentHistoryItem URLString]);
+		[webView goToBackForwardItem:currentHistoryItem];
+	}
 }
 
 @end

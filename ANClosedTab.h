@@ -1,6 +1,6 @@
 #import <Cocoa/Cocoa.h>
 
-@class WebBackForwardList;
+@class WebHistoryItem;
 
 /*
  * Class representing a single closed tab in a window.  Instantiating
@@ -16,7 +16,7 @@
 	NSInteger tabIndex;
 	BOOL wasFocused;
 	NSMutableArray* history;
-	NSUInteger currentHistoryIndex;
+	WebHistoryItem* currentHistoryItem;
 }
 
 -(id)initWithTab:(NSTabViewItem*)tab;

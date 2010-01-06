@@ -63,9 +63,11 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 
 +(void)ANSwizzleANCustomWindow
 {
+	//Swizzle closeTab
 	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(_safari_closeTab:) withMethod:@selector(closeTab:) error:NULL];
 	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(closeTab:) withMethod:@selector(_anamnesis_closeTab:) error:NULL];
 	
+	//Swizzle close window
 	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(_safari_windowWillClose:) withMethod:@selector(windowWillClose:) error:NULL];
 	[NSClassFromString(@"BrowserWindowController") jr_swizzleMethod:@selector(windowWillClose:) withMethod:@selector(_anamnesis_windowWillClose:) error:NULL];
 }
@@ -113,6 +115,16 @@ NSMutableArray* ancw_closedTabStackForObject(id obj)
 	[closedTab reinstateTabInWindowController:self];
 	
 	[closedTabStack removeLastObject];
+}
+
+-(BOOL)canReopenLastTab
+{
+	if([ancw_closedTabStackForObject(self) count] == 0)
+	{
+		//There are no closed tabs to reopen
+		return NO;
+	}
+	return YES;
 }
 
 //Swizzling handles
