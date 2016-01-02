@@ -1,4 +1,4 @@
-Copyright (c) Jacob Howard
+Copyright (c) 2010 Jacob Howard
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
