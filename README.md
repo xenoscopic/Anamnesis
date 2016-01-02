@@ -11,7 +11,8 @@ MIT License.  Features include the following:
 
 - Reopen tabs that have been closed on the current window, obviously
 - Maintains all history for closed tabs
-- Reassigns the “Hide/Show Tab Bar” key combination to ⌥⇧⌘T so that the ⇧⌘T
+- Reassigns the “Hide/Show Tab Bar” key combination to `⌥⇧⌘T` so that the
+  `⇧⌘T`
   key combination can be assigned to reopen the last closed tab
 - Adds a Reopen Last Closed Tab option to the History menu
 - Works on both 32-bit and 64-bit Safari
@@ -34,10 +35,11 @@ Anyway, if you want to give it a shot, do the following:
 
 - Quit Safari
 - Download and install [SIMBL](http://www.culater.net/software/SIMBL/SIMBL.php)
-- Compile the Anamnesis project to generate Anamnesis.bundle.
-- Copy Anamnesis.bundle into either `/Library/Application Support/SIMBL/Plugins`
-  or `~/Library/Application Support/SIMBL/Plugins` (create one of these
-  directories if they don’t exist)
+- Compile the Anamnesis project to generate `Anamnesis.bundle`
+- Copy `Anamnesis.bundle` into either
+  `/Library/Application Support/SIMBL/Plugins` or
+  `~/Library/Application Support/SIMBL/Plugins` (create one of these directories
+  if they don’t exist)
 - Fire up Safari
 
 To uninstall, just delete Anamnesis.bundle from wherever you put it and restart
